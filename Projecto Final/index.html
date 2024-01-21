@@ -1,0 +1,182 @@
+<!--
+Mestrado em Engenharia Informática e Tecnologia Web
+UC Visualização de Informação
+Tópico 5 - Projecto Final
+Autores: Claudia Pires (1303334) / Valter Bastos (2302612)
+Ficheiro HTML
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gráficos D3.js</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://unpkg.com/topojson-client@3"></script> 
+</head>
+<body>
+    <h2>Visualizações</h2>
+
+    <label><input type="radio" name="chartType" value="bar" checked> Gráfico de Barras</label>
+    <label><input type="radio" name="chartType" value="line"> Gráfico de Linhas</label>
+    <label><input type="radio" name="chartType" value="map"> Mapa-Múndi</label>
+
+    <div id="chart"></div>
+
+    <script>
+        // Dados forçados para testar os gráficos
+        const data = [
+    { year: "2001", value: 100 },
+    { year: "2003", value: 80 },
+    { year: "2005", value: 130 },
+    { year: "2007", value: 10 },
+    { year: "2008", value: 95 }
+];
+
+    const margin = { top: 20, right: 20, bottom: 30, left: 40 };
+    // Definido para que os gráficos ocupem 75% das paginas
+    const width = window.innerWidth * 0.75 - margin.left - margin.right;
+    const height = window.innerHeight * 0.75 - margin.top - margin.bottom;
+
+    const svg = d3.select("#chart").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    const x = d3.scaleBand()
+        .range([0, width])
+        .padding(0.1)
+        .domain(data.map(d => d.year));
+
+    const xLine = d3.scalePoint()
+        .range([0, width])
+        .domain(data.map(d => d.year));
+
+    const y = d3.scaleLinear()
+        .range([height, 0])
+        .domain([0, d3.max(data, d => d.value)]);
+
+    svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
+
+    svg.append("g")
+        .call(d3.axisLeft(y));
+
+ 
+// Configuração dos Eixos para poderem ser chamados de forma independente 
+function configureAxes() {
+
+    const x = d3.scaleBand()
+        .range([0, width])
+        .padding(0.1)
+        .domain(data.map(d => d.year));
+
+    const y = d3.scaleLinear()
+        .range([height, 0])
+        .domain([0, d3.max(data, d => d.value)]);
+
+    // Adicionar os eixos X e Y ao SVG
+    svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
+
+    svg.append("g")
+        .call(d3.axisLeft(y));
+}
+
+// Graficos de Barras
+function drawBarChart() {
+    svg.selectAll("*").remove(); // Limpa tudo no SVG
+    configureAxes(); // Configura os eixos novamente
+
+    svg.selectAll(".bar")
+        .data(data)
+        .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", d => x(d.year))
+        .attr("width", x.bandwidth())
+        .attr("y", d => y(d.value))
+        .attr("height", d => height - y(d.value))
+        .attr("fill", "steelblue");
+}
+
+// Gráfico de Linhas
+function drawLineChart() {
+    svg.selectAll("*").remove(); // Limpa tudo no SVG
+    configureAxes(); // Configura os eixos novamente
+
+    const line = d3.line()
+        .x(d => xLine(d.year))
+        .y(d => y(d.value));
+
+    svg.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "steelblue")
+        .attr("stroke-width", 1.5)
+        .attr("class", "line")
+        .attr("d", line);
+
+    svg.selectAll(".dot")
+        .data(data)
+        .enter().append("circle")
+        .attr("class", "dot")
+        .attr("cx", d => xLine(d.year))
+        .attr("cy", d => y(d.value))
+        .attr("r", 5)
+        .attr("fill", "steelblue");
+}
+
+
+// Gráfico Mapa Mundo interactivo
+function drawWorldMap() {
+    svg.selectAll("*").remove(); // Limpa tudo no SVG
+
+    const projection = d3.geoMercator()
+        .scale(width / 2 / Math.PI)
+        .translate([width / 2, height / 1.5]);
+
+    const path = d3.geoPath().projection(projection);
+
+    const zoom = d3.zoom()
+        .scaleExtent([1, 8])
+        .on('zoom', (event) => {
+            g.attr('transform', event.transform);
+        });
+
+    const g = svg.append('g');
+
+    svg.call(zoom);
+
+
+   // Carrega e desenha o mapa-múndi
+    d3.json("https://d3js.org/world-110m.v1.json").then(world => {
+    g.selectAll("path")
+        .data(topojson.feature(world, world.objects.countries).features)
+      .enter().append("path")
+        .attr("d", path)
+        .attr("fill", "lightgray")
+        .attr("stroke", "white");
+});
+}
+
+// Chamadas por opção
+document.querySelectorAll('input[name="chartType"]').forEach(input => {
+    input.addEventListener('change', function() {
+        if (this.value === 'bar') {
+            drawBarChart();
+        } else if (this.value === 'line') {
+            drawLineChart();
+        } else if (this.value === 'map') {
+            drawWorldMap();
+        }
+    });
+});
+
+// Desenhar o gráfico de barras por padrão
+    drawBarChart();
+
+</script>
+</body>
+</html>
