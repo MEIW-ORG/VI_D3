@@ -10,6 +10,6 @@ Pode ser visualizado em:
 https://valterbs86.github.io/MEIW2023_VI5/index.html
 
 Código fonte disponível em:
-https://github.com/MEIW-ORG
+https://github.com/MEIW-ORG/VI_D3/
 
 ---------------------------------------------------------
