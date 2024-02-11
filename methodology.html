@@ -1,0 +1,102 @@
+<!--
+Mestrado em Engenharia Informática e Tecnologia Web
+Visualização de Informação
+Projeto Final
+Grupo: Claudia Pires (1303334) / Valter Bastos (2302612)
+Ficheiro HTML
+-->
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="UTF-8">
+		<link rel="icon" type="image/jpg" href="./assets/Uab_logo.JPG">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Topico 5 VI</title>
+		
+		<link rel="stylesheet" href="./css/page_template.css">
+		
+		<script type="text/javascript" src="./js/page_template.js"></script>
+</head>
+<body>
+		<!--Titulo-->
+		<div class="title-container">
+			<img class="header-image" src="./assets/Uab_logo.JPG">
+			<div class="title-content">
+				<h1>World Poverty</h1>
+				<h2>MEIW 2023/24 - VI</h2>
+				<!--<p>
+				<button onclick="openMenu()">Click for Navigation Options</button>-->
+			</div>
+		</div>
+		
+		<!--Menu-->
+		<div class="menu" id="myMenu">
+			<script type="text/javascript" src="js/page_template.js"></script>
+			<ul class="menu-list">
+				<!--<li><button onclick="openMenu()">Menu</button></li>-->
+				<li><a href="index.html">World Overview</a></li>
+				<li><a href="EU27.html">EU27 Overview</a></li>
+				<li><a href="methodology.html">Methodology</a></li>
+				<!--Botão para carregar um ficheiro-->
+				<!--<li><input type="file" onchange=read(this) accept=".csv"></li>-->
+			</ul>
+		</div>
+		
+		<!--Print conteudo do ficheiro-->
+		<!--<div class="output"></div>-->
+		
+
+		<!--Graficos e texto-->
+		<div class="content" style="text-align:center;">			
+			<!----------------------------------------------------------------->
+			<div id="include_methodology" class="methodology">
+				<div>
+					<h1>Methodology</h1>	
+					<div style="text-align:left; margin-right: 20px; margin-left: 20px; font-size: 14px;">
+						Our definition of poverty was described in the previous Topics (link below):<br>
+						· <a href="https://elearning.uab.pt/mod/forum/discuss.php?d=1042577#p3523263" target="_blank" data-saferedirecturl="https://www.google.com/url?q=https://elearning.uab.pt/mod/forum/discuss.php?d%3D1042577%23p3523263&amp;source=gmail&amp;ust=1706633223334000&amp;usg=AOvVaw2oTChXF-mv3Njo0QWPL935">
+							https://elearning.uab.pt/mod/<wbr>
+							forum/discuss.php?d=1042577#<wbr>
+							p3523263
+						</a>
+						<br>
+						· <a href="https://elearning.uab.pt/mod/forum/discuss.php?d=1042577#p3526764" target="_blank" data-saferedirecturl="https://www.google.com/url?q=https://elearning.uab.pt/mod/forum/discuss.php?d%3D1042577%23p3526764&amp;source=gmail&amp;ust=1706633223334000&amp;usg=AOvVaw3mi4LjCH4NC4X0vrJCjk5m">
+							https://elearning.uab.pt/mod/<wbr>
+							forum/discuss.php?d=1042577#<wbr>
+							p3526764
+						</a>
+						<br>
+						<br>
+							In general terms, we’ve defined poverty as being purely an economical condition (based on household net incomes).
+						<br>
+							<li>For Developing countries, as stated by the United Nations: people living with less than 3.65$ - this adjusts for inflation, is considered to be living under the poverty line.</li>
+							<li>For EU27 Countries, EUROSTAT defines that anyone living with less than 60% of the countries’ median household net income, is below the poverty line.</li>
+							<li>Similarly, for the rest of the developed countries, the most common threshold for the poverty line is 50% of the countries’ median household net income.</li>
+						<br>
+							We’ve based our methodology on the rules above.<br>
+							<br>
+							For this, several datasets have been collected and combined to generate this application:<br>
+							<li><a href="href=https://ourworldindata.org/explorers/incomes-across-distribution-comparison">href=https://ourworldindata.org/explorers/incomes-across-distribution-comparison</a> -> ourworldindata - Dataset Incomes and Population Across the World;</li>
+							<li><a href="https://eige.europa.eu/gender-statistics/dgs/indicator/ta_livcond_arop_gen__ilc_li02">https://eige.europa.eu/gender-statistics/dgs/indicator/ta_livcond_arop_gen__ilc_li02</a> -> European Institute of Gender Equality - At-risk-of-poverty rate by poverty threshold, age and sex (source: EU-SILC survey);</li>
+							<li><a href="https://ec.europa.eu/eurostat/databrowser/view/demo_pjan/default/table?lang=en&category=demo.demo_pop">https://ec.europa.eu/eurostat/databrowser/view/demo_pjan/default/table?lang=en&category=demo.demo_pop</a> -> Eurostat - EU27 Countries Population by Gender</li>
+							<li>Bing Chat - List of LDC countries</li>
+						<br>
+							
+						<br>
+							*Observations:<br>
+							Data before Year 2000 and after Year 2021 was excluded from the datasets due to un-sufficient completeness.<br>
+							To fill in the gaps for Years on which data was not present on the datasets, we've considered the closest figures available.<br>
+						<br>
+						</div>
+
+				</div>
+			</div>
+		
+		<div id="trabalho" class="trabalho" style="text-align:right; margin-right: 20px; margin-left: 20px; font-size: 14px;">
+			<p style="font-weight: bold;">Mestrado em Engenharia Informática e Tecnologia Web</p>
+			<p style="font-weight: bold;">22126 – Visualização de informação</p>
+			<p>Grupo: Claudia Pires (1303334) / Valter Bastos (2302612)</p>
+		</div>	
+
+</body>
+</html>

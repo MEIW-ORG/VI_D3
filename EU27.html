@@ -1,0 +1,132 @@
+<!--
+Mestrado em Engenharia Informática e Tecnologia Web
+Visualização de Informação
+Projeto Final
+Grupo: Claudia Pires (1303334) / Valter Bastos (2302612)
+Ficheiro HTML
+-->	
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="UTF-8">
+		<link rel="icon" type="image/jpg" href="./assets/Uab_logo.JPG">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Topico 5 VI</title>
+		<script src="https://d3js.org/d3.v7.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
+		
+		<link rel="stylesheet" href="./css/page_template.css">
+		<link rel="stylesheet" href="./css/EU27_charts.css">
+		<script type="text/javascript" src="./js/page_template.js"></script>
+		
+		<script type="text/javascript" src="./js/DataLoad_functions.js"></script>
+		<script type="text/javascript" src="./js/Draw_functions_EU27.js"></script>
+</head>
+<body>
+		<!--Titulo-->
+		<div class="title-container">
+			<img class="header-image" src="./assets/Uab_logo.JPG">
+			<div class="title-content">
+				<h1>World Poverty</h1>
+				<h2>MEIW 2023/24 - VI</h2>
+			</div>
+		</div>
+		
+		<!--Menu-->
+		<div class="menu" id="myMenu">
+			<script type="text/javascript" src="js/page_template.js"></script>
+			<ul class="menu-list">
+				<li><a href="index.html">World Overview</a></li>
+				<li><a href="EU27.html">EU27 Overview</a></li>
+				<li><a href="methodology.html">Methodology</a></li>
+			</ul>
+		</div>
+
+		<!--Graficos e texto-->
+		<div class="content" style="text-align:center;">			
+			<!----------------------------------------------------------------->
+			<div class="chart-area">
+				<h1>EU27 Overview</h1>
+				<div class="grid-container">
+					<!--Div à esq. cima -->
+					<div class="grid-child purple">
+						<p style="text-align:center; font-size:22px;font-weight:bold;">Share of Population under Poverty line<br>
+						<b>&#8681;</b>
+						</p>
+						<div id="WorldMapChart_div" class="WorldMapChart_div">
+							<script>
+								LoadData("./data/Load_WorldChart_EU27.csv", "WorldMapChart", "#WorldMapChart_div");
+							</script>
+						</div>
+						
+						<div class="chart_desc">
+							<p style="font-weight: bold;">Chart description:</p>
+							<u>Choropleth Europe map</u> showing the prevalence of poverty (share of population) in EU27 Member States.<br>
+							Clicking the play button will show the evolution along the years from 2000 until 2021.<br><br>
+							<p>							
+						</div>
+						
+					</div>
+					<!--Div à dir. cima -->
+					<div class="grid-child purple">
+						<p style="text-align:center; font-size:22px;font-weight:bold;">Change of % Population under Poverty line from 2000 onwards<br>
+						<b>&#8681;</b>
+						</p>
+						<div id="RaceBar_div" class="RaceBar_div">
+							<script>
+								LoadData("./data/Load_EU27_RaceChart.csv", "RaceBarChart", "#RaceBar_div");
+							</script>
+						</div>
+						
+						<div class="chart_desc">
+							<p style="font-weight: bold;">Chart description:</p>
+							<u>RaceBar Chart</u> showing the evolution of poverty prevalence (share of population) in EU27 Member States along the Years from 2000 until 2021.<br>
+							<p>							
+						</div>
+					
+					</div>	
+				</div>
+					<div class="grid-child purple">
+						<p style="text-align:center; font-size:22px;font-weight:bold;">Share of Female vs. Male Population in Poverty<br>
+						<b>&#8681;</b>
+						</p>
+						<div id="LoliPopChart_div" class="LoliPopChart_div">
+							<script>
+								LoadData("./data/Load_LollipopChart_EU27.csv", "LolipopChart", "#LoliPopChart_div");
+							</script>
+						</div>
+						
+						<div class="chart_desc">
+							<p style="font-weight: bold;">Chart description:</p>
+							<u>Lollipop Chart</u> comparing Share of poverty in Female population vs Male Population.<br>
+							Cross sectional data for Year 2021.<br>	
+							<p>
+						</div>
+					</div>
+					<div class="grid-child purple">
+						<p style="text-align:center; font-size:22px;font-weight:bold;">Contribution of each Country to the Total Nr. of people living under the Proverty Line<br>
+						<b>&#8681;</b>
+						<p style="font-weight:bold; font-size:18px;">Year: 2021</p>						
+						</p>
+						<img src="./assets/TreeMap_EU27.PNG" width="1640" height="732"><br>
+						
+						<div class="chart_desc">
+							<p style="font-weight: bold;">Chart description:</p>
+							<u>TreeMap chart</u> showing the contribution of each country to the total EU27 Head Count living under the poverty line.<br>
+							Cross sectional data for Year 2021.<br>	
+							<p>							
+						</div>
+					</div>
+			</div>
+		</div>
+		
+		<div id="trabalho" class="trabalho" style="text-align:right; margin-right: 20px; margin-left: 20px; font-size: 14px;">
+			<p style="font-weight: bold;">Mestrado em Engenharia Informática e Tecnologia Web</p>
+			<p style="font-weight: bold;">22126 – Visualização de informação</p>
+			<p>Grupo: Claudia Pires (1303334) / Valter Bastos (2302612)</p>
+		</div>	
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!--
+Mestrado em Engenharia Informática e Tecnologia Web
+Visualização de Informação
+Projeto Final
+Grupo: Claudia Pires (1303334) / Valter Bastos (2302612)
+Ficheiro HTML
+-->
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="UTF-8">
+		<link rel="icon" type="image/jpg" href="./assets/Uab_logo.JPG">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Topico 5 VI</title>
+		<script src="https://d3js.org/d3.v7.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
+		
+		<link rel="stylesheet" href="./css/page_template.css">
+		<link rel="stylesheet" href="./css/World_charts.css">
+		
+		<script type="text/javascript" src="./js/page_template.js"></script>
+		<script type="text/javascript" src="./js/DataLoad_functions.js"></script>
+		<script type="text/javascript" src="./js/Draw_functions_World.js"></script>
+</head>
+<body>
+		<!--Titulo-->
+		<div class="title-container">
+			<img class="header-image" src="./assets/Uab_logo.JPG">
+			<div class="title-content">
+				<h1>World Poverty</h1>
+				<h2>MEIW 2023/24 - VI</h2>
+			</div>
+		</div>
+		
+		<!--Menu-->
+		<div class="menu" id="myMenu">
+			<script type="text/javascript" src="js/page_template.js"></script>
+			<ul class="menu-list">
+				<li><a href="index.html">World Overview</a></li>
+				<li><a href="EU27.html">EU27 Overview</a></li>
+				<li><a href="methodology.html">Methodology</a></li>
+			</ul>
+		</div>
+
+		<!--Graficos e texto-->
+		<div id="include_WorldOverView" class="WorldOverView">
+		</div>
+		
+		<div id="trabalho" class="trabalho" style="text-align:right; margin-right: 20px; margin-left: 20px; font-size: 14px;">
+			<p style="font-weight: bold;">Mestrado em Engenharia Informática e Tecnologia Web</p>
+			<p style="font-weight: bold;">22126 – Visualização de informação</p>
+			<p>Grupo: Claudia Pires (1303334) / Valter Bastos (2302612)</p>
+		</div>	
+
+</body>
+</html>
